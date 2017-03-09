@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="11"
+        android:orientation="horizontal">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="#44000000">
+        <RelativeLayout
+            android:id="@+id/home_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+           >
+
+         <FrameLayout
+             android:id="@+id/fl01"
+             android:layout_centerHorizontal="true"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="5dp"
+             >
+
+         <ImageView
+             android:id="@+id/home_notnormal"
+             android:layout_width="40dp"
+             android:layout_height="30dp"
+             android:src="@drawable/tab_home_selected"/>
+
+          <ImageView
+              android:id="@+id/home_normal"
+              android:layout_width="40dp"
+              android:layout_height="30dp"
+              android:src="@drawable/tab_home_normal"
+              android:visibility="invisible"/>
+
+
+
+         </FrameLayout>
+
+           <TextView
+               android:text="资讯"
+               android:id="@+id/tv_home"
+               android:textColor="#fa7500"
+               android:layout_centerHorizontal="true"
+               android:layout_marginTop="37dp"
+               android:textSize="10sp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/hot_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <FrameLayout
+                android:id="@+id/fl02"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                >
+
+                <ImageView
+                    android:id="@+id/hot_normal"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/tab_hot_normal"/>
+
+                <ImageView
+                    android:id="@+id/hot_notnormal"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/tab_hot_selected"
+                    android:visibility="invisible"/>
+
+
+
+            </FrameLayout>
+
+            <TextView
+                android:text="热点"
+                android:id="@+id/tv_hot"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="37dp"
+                android:textSize="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/vip_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <FrameLayout
+                android:id="@+id/fl03"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                >
+
+                <ImageView
+                    android:id="@+id/vip_notnormal"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/tab_vip_selected"
+                    android:visibility="invisible"/>
+
+                <ImageView
+                    android:id="@+id/vip_normal"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/tab_vip_normal"
+                    />
+
+
+
+            </FrameLayout>
+
+            <TextView
+                android:text="明星赛事"
+                android:id="@+id/tv_vip"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="37dp"
+                android:textSize="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/live_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <FrameLayout
+                android:id="@+id/fl04"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                >
+
+                <ImageView
+                    android:id="@+id/live_notnormal"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/tab_live_selected"
+                    android:visibility="invisible"/>
+
+                <ImageView
+                    android:id="@+id/live_normal"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/tab_live_normal"
+                    />
+
+
+
+            </FrameLayout>
+
+            <TextView
+                android:text="直播"
+                android:id="@+id/tv_live"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="37dp"
+                android:textSize="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/person_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <FrameLayout
+                android:id="@+id/fl05"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                >
+
+                <ImageView
+                    android:id="@+id/person_notnormal"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/tab_personal_selected"
+                    android:visibility="invisible"/>
+
+                <ImageView
+                    android:id="@+id/person_normal"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/tab_personal_normal"
+                    />
+
+
+
+            </FrameLayout>
+
+            <TextView
+                android:text="个人中心"
+                android:id="@+id/tv_person"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="37dp"
+                android:textSize="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
