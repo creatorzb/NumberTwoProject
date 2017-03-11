@@ -5,10 +5,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.lenovo.numbertwoapp.R;
 import com.example.lenovo.numbertwoapp.adpter.LV_Adapter;
 import com.example.lenovo.numbertwoapp.mc.LoLView_C;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 
 /**
  * Created by lenovo on 2017/3/5.
@@ -19,10 +24,14 @@ public class SCActivity extends BaseActivity {
     private LV_Adapter lv_adapter;
     private ListView listView;
     private ImageView imageView_back;
+
        @Override
     public void addLayout() {
         setContentView(R.layout.sc_layout);
+           ButterKnife.bind(this);
     }
+
+
 
     @Override
     public void initView() {
@@ -50,4 +59,5 @@ public class SCActivity extends BaseActivity {
             }
         });
     }
+
 }

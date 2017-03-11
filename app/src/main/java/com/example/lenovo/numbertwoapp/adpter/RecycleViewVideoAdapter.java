@@ -64,7 +64,7 @@ public class RecycleViewVideoAdapter extends RecyclerView.Adapter<RecyclerView.V
     @Override
     public void onBindViewHolder( RecyclerView.ViewHolder holder, int position) {
             MyViewHolder1 holder1= (MyViewHolder1) holder;
-          playfunction(holder1,list.get(position).getLink1url());
+
       //  holder1.videoView.setVideoPath(list.get(position).getM_link1url());
 
 //            holder1.tv_title.setText(list.get(position).getTitle());
@@ -110,20 +110,7 @@ public class RecycleViewVideoAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         }
     }
-    private void playfunction(MyViewHolder1 holder,String path){
-        if (path==""){
-            // Tell the user to provide a media file URL/path. 
-            Toast.makeText(context,"请设置视频的URI地址", Toast.LENGTH_LONG).show();
-            return;}else{/*     * Alternatively,for streaming media you can use     * mVideoView.setVideoURI(Uri.parse(URLstring));     */
-           holder.videoView.setVideoPath(path);
-            holder.videoView.setMediaController(new MediaController(context));
-            holder.videoView.requestFocus();
-            holder.videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener(){
-                @Override
-    public void onPrepared(MediaPlayer mp) {
-                      mp.start();
 
-                }});}}
 //    class MyViewHolder2 extends RecyclerView.ViewHolder{
 //        TextView tv_title,tv_date,textView_auther;
 //        ImageView imageView_01,imageView_02;
