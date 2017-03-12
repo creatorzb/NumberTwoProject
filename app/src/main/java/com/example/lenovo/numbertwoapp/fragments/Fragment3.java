@@ -39,7 +39,9 @@ import static android.R.attr.path;
 
 public class Fragment3 extends Fragment {
     private RecycleViewVideoAdapter recycleViewVideoAdapter;
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView;;
+    private ArrayList<FootBall.ResultBean.ListBean>list;
+    private int i=0;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,8 +49,11 @@ public class Fragment3 extends Fragment {
         recyclerView= (RecyclerView) view.findViewById(R.id.video_rlv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+if(teams(getTeam())!=null){
+    Log.e("ssss",teams(getTeam()));
+    getHttp(teams(getTeam()));
+}
 
-        getHttp(teams(getTeam()));
         return view;
 
     }
@@ -71,10 +76,15 @@ public class Fragment3 extends Fragment {
     public void onResponse(Call<FootBall> call, final Response<FootBall> response) {
                 // textView.setText(response.body().toString());
                 //response.body().getResult().getData();
-                Log.e("ffff",response.body().getResult().getList().toString());
-                recycleViewVideoAdapter=new RecycleViewVideoAdapter(getContext());
-                recycleViewVideoAdapter.updateList(response.body().getResult().getList());
-                recyclerView.setAdapter(recycleViewVideoAdapter);
+
+                    Log.e("ffff",response.body().getResult().getList().toString());
+                    recycleViewVideoAdapter=new RecycleViewVideoAdapter(getContext());
+                    recycleViewVideoAdapter.addList(response.body().getResult().getList());
+                    recyclerView.setAdapter(recycleViewVideoAdapter);
+
+
+
+
 
 
                 //list1=response.body().getResult().getData();
@@ -108,7 +118,7 @@ public class Fragment3 extends Fragment {
 
     public ArrayList<String> getTeam(){
          ArrayList<String>list=new ArrayList<>();
-          list.add("老鹰");
+          list.add("奇才");
           list.add("凯尔特人");
           list.add("山猫");
           list.add("公牛");
@@ -142,17 +152,20 @@ public class Fragment3 extends Fragment {
          list.add("雷霆");
          list.add("猛龙");
          list.add("爵士");
-         list.add("奇才");
+        // list.add("奇才");
          return list;}
 
 
     public String teams(ArrayList<String>list){
-        String team=null;
-        for (int i=0;i<list.size();i++){
 
-            team= list.get(i);
+        for (i=0;i<list.size();i++){
+         if(list.get(i)!=null){
+
+               return list.get(i);
         }
-        return team;
+
+        }
+        return null;
 
     }
 }

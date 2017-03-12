@@ -2,6 +2,8 @@ package com.example.lenovo.numbertwoapp.activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -13,7 +15,6 @@ import com.example.lenovo.numbertwoapp.fragments.Fragment3;
 import com.example.lenovo.numbertwoapp.fragments.Fragment4;
 import com.example.lenovo.numbertwoapp.fragments.Fragment5;
 
-import io.vov.vitamio.LibsChecker;
 
 public class MainActivity extends BaseActivity {
 
@@ -29,7 +30,8 @@ public class MainActivity extends BaseActivity {
     private TextView textView_home, textView_vip,textView_hot,
     textView_live,textView_person;
     @Override
-    public void addLayout() {setContentView(R.layout.activity_main);}
+    public void addLayout() {setContentView(R.layout.activity_main);
+        }
     @Override
     public void initView() {
         relativeLayout_home= (RelativeLayout) findViewById(R.id.home_rl);

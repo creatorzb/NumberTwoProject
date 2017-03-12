@@ -33,11 +33,16 @@ public class RecycleViewVideoAdapter extends RecyclerView.Adapter<RecyclerView.V
             }
     //添加数据
     public void addList( List<FootBall.ResultBean.ListBean> list){
-//        if(this.list.containsAll(list)){
-//            return;
-//        }
-        this.list.addAll(list);
-        notifyDataSetChanged();
+
+        if(this.list==null){
+            this.list=list;
+            notifyDataSetChanged();
+            return;
+        }else {
+            this.list.addAll(list);
+            notifyDataSetChanged();
+        }
+
     }
 
     //更新数据
@@ -64,13 +69,17 @@ public class RecycleViewVideoAdapter extends RecyclerView.Adapter<RecyclerView.V
     @Override
     public void onBindViewHolder( RecyclerView.ViewHolder holder, int position) {
             MyViewHolder1 holder1= (MyViewHolder1) holder;
-
-      //  holder1.videoView.setVideoPath(list.get(position).getM_link1url());
+        holder1.tv_team01.setText(list.get(position).getPlayer1());
+        holder1.textView_team02.setText(list.get(position).getPlayer2());
+        holder1.tv_vs.setText("VS");
+        holder1.textView_date.setText(list.get(position).getM_time());
+        Picasso.with(context).load(list.get(position).getPlayer1logo()).resize(50,50).into(holder1.imageView_01);
+        Picasso.with(context).load(list.get(position).getPlayer2logo()).resize(50,50).into(holder1.imageView_02);
 
 //            holder1.tv_title.setText(list.get(position).getTitle());
 //            holder1.tv_date.setText(list.get(position).getDate());
 //            holder1.textView_auther.setText(list.get(position).getAuthor_name());
-//            Picasso.with(context).load(list.get(position).getThumbnail_pic_s()).resize(200,200).into(holder1.imageView_01);
+//
 
     }
 
@@ -96,17 +105,18 @@ public class RecycleViewVideoAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     class MyViewHolder1 extends RecyclerView.ViewHolder{
-     TextView tv_title,tv_date,textView_auther;
-        ImageView imageView_01;
-        private VideoView videoView;
+     TextView tv_team01,tv_vs,textView_team02,textView_date;
+
+        ImageView imageView_01,imageView_02;
         public MyViewHolder1(View itemView) {
             super(itemView);
-            videoView= (VideoView) itemView.findViewById(R.id.videos);
+            tv_team01= (TextView) itemView.findViewById(R.id.team_name_01);
+            tv_vs= (TextView) itemView.findViewById(R.id.tv_vs);
+            textView_team02= (TextView) itemView.findViewById(R.id.team_name_02);
+            textView_date= (TextView) itemView.findViewById(R.id.tv_date);
+            imageView_01= (ImageView) itemView.findViewById(R.id.image_team_01);
+            imageView_02= (ImageView) itemView.findViewById(R.id.image_team_02);
 
-//            tv_title= (TextView) itemView.findViewById(R.id.title_i1);
-//            tv_date= (TextView) itemView.findViewById(R.id.date_i1);
-//            textView_auther= (TextView) itemView.findViewById(R.id.author_i1);
-//            imageView_01= (ImageView) itemView.findViewById(R.id.image_i1);
 
         }
     }

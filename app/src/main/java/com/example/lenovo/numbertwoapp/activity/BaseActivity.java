@@ -1,9 +1,16 @@
 package com.example.lenovo.numbertwoapp.activity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.view.Window;
+
+import com.example.lenovo.numbertwoapp.R;
 
 /**
  * Created by lenovo on 2017/2/4.
@@ -11,10 +18,18 @@ import android.support.v7.app.AppCompatActivity;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+       // Transition explode = TransitionInflater.from(this).inflateTransition(R.transition.explode);
+        //退出时使用
+      //  getWindow().setExitTransition(explode);
+//第一次进入时使用
+       // getWindow().setEnterTransition(explode);
+//再次进入时使用
+       // getWindow().setReenterTransition(explode);
         addLayout();
         initView();
 

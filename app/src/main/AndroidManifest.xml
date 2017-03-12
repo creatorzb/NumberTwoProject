@@ -20,13 +20,14 @@
     <application
         android:name=".activity.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/log01"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity android:name=".activity.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            >
 
 
             <intent-filter>
@@ -34,21 +35,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <service
 
-                android:name="io.vov.vitamio.VitamioService"
-
-                android:exported="false" >
-
-                <intent-filter>
-
-                    <action android:name="io.vov.vitamio.IVitamioService" />
-
-                </intent-filter>
-
-            </service>
 
         </activity>
+
         <activity android:name=".activity.WebActivity"></activity>
         <activity android:name=".activity.SCActivity"></activity>
         <activity
