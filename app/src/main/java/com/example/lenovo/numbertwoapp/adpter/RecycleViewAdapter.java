@@ -2,34 +2,31 @@ package com.example.lenovo.numbertwoapp.adpter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lenovo.numbertwoapp.R;
 
-import java.util.ArrayList;
 import java.util.List;
-import  com.example.lenovo.numbertwoapp.model.User;
+import com.example.lenovo.numbertwoapp.model.Userss;
 import com.squareup.picasso.Picasso;
 
 /**
  * Created by Zhang on 2017/3/1.
  */
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    private List<User.ResultBean.DataBean> list;
+    private List<Userss.ResultBean.DataBean> list;
     private Context context;
     public RecycleViewAdapter(Context context){
      this.context=context;
 
             }
     //添加数据
-    public void addList( List<User.ResultBean.DataBean> list){
+    public void addList( List<Userss.ResultBean.DataBean> list){
 //        if(this.list.containsAll(list)){
 //            return;
 //        }
@@ -38,7 +35,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     //更新数据
-    public void updateList( List<User.ResultBean.DataBean> list){
+    public void updateList( List<Userss.ResultBean.DataBean> list){
         this.list=list;
         notifyDataSetChanged();
         Log.e("wwww",list.toString());

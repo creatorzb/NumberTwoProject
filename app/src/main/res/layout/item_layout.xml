@@ -6,31 +6,28 @@
 
     <ImageView
         android:layout_marginTop="10dp"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_launcher"
         android:id="@+id/imageView" />
 
     <TextView
-        android:layout_marginTop="10dp"
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView_name"
-        android:layout_alignStart="@+id/textView_name"
-        android:id="@+id/textView_url"
-        android:layout_below="@+id/textView_name" />
-
-    <TextView
 
         android:text="TextView"
+        android:textSize="15sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="18dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="16dp"
         android:id="@+id/textView_name"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_marginTop="26dp" />
+        android:layout_alignTop="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_url"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

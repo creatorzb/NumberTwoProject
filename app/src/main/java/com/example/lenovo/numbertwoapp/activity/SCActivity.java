@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.lenovo.numbertwoapp.R;
@@ -25,6 +26,7 @@ public class SCActivity extends BaseActivity {
     private ListView listView;
     private ImageView imageView_back;
 
+
        @Override
     public void addLayout() {
         setContentView(R.layout.sc_layout);
@@ -37,6 +39,7 @@ public class SCActivity extends BaseActivity {
     public void initView() {
        listView= (ListView) findViewById(R.id.lv_sc);
         imageView_back= (ImageView) findViewById(R.id.image_scback);
+
         lView_c=new LoLView_C(this);
         lv_adapter=new LV_Adapter(this,lView_c.showAll());
         listView.setAdapter(lv_adapter);
@@ -54,6 +57,8 @@ public class SCActivity extends BaseActivity {
                 Intent intent=new Intent(SCActivity.this,WebActivity.class);
                 String url=lView_c.showAll().get(position).getUrl();
                 intent.putExtra("url",url);
+                intent.putExtra("name",lView_c.showAll().get(position).getName());
+                intent.putExtra("image",lView_c.showAll().get(position).getImage());
                 startActivity(intent);
                 finish();
             }

@@ -9,20 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.lenovo.numbertwoapp.R;
 import com.example.lenovo.numbertwoapp.adpter.RecycleViewVideoAdapter;
 import com.example.lenovo.numbertwoapp.model.FootBall;
-import com.example.lenovo.numbertwoapp.model.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import io.vov.vitamio.MediaPlayer;
-import io.vov.vitamio.widget.MediaController;
-import io.vov.vitamio.widget.VideoView;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -30,8 +23,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-
-import static android.R.attr.path;
 
 /**
  * Created by lenovo on 2017/2/27.
@@ -58,7 +49,7 @@ if(teams(getTeam())!=null){
 
     }
     public void getHttp(String team){
-        //  List<User.ResultBean.DataBean>list2;
+        //  List<Userss.ResultBean.DataBean>list2;
        // Retorfit框架获取网络数据
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://op.juhe.cn/onebox/basketball/")

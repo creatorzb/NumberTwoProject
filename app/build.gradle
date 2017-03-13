@@ -91,4 +91,5 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile project(':vitamio')
+    compile 'in.srain.cube:ptr-load-more:1.0.6'
 }

@@ -1,11 +1,11 @@
 [
     {
-        "merged": "E:\\daima\\NumberTwoApp\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png",
-        "source": "E:\\daima\\NumberTwoApp\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png"
-    },
-    {
         "merged": "E:\\daima\\NumberTwoApp\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_pause.png",
         "source": "E:\\daima\\NumberTwoApp\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_pause.png"
+    },
+    {
+        "merged": "E:\\daima\\NumberTwoApp\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png",
+        "source": "E:\\daima\\NumberTwoApp\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png"
     },
     {
         "merged": "E:\\daima\\NumberTwoApp\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",

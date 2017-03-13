@@ -28,7 +28,7 @@ public class LoLView_C {
         for (Person person : list) {
             if (!person.getUrl().equals(p.getUrl()) && p.getUrl() != null) {
 
-                String sql = "insert into " + ListView_M.table_name + " values ( null ,' "+ p.getUrl() +"' , '"+ p.getName()+ "' , '"+ p.getImage()+" ') ";
+                String sql = "insert into " + ListView_M.table_name + " values ( null ,' "+ p.getUrl() +"' , '"+p.getName()+"' , '"+ p.getImage()+" ') ";
                 db.execSQL(sql);
                 return;
             }else if (p.getName()==null){
@@ -79,7 +79,7 @@ return false;
         for (Person p:list) {
            if (p.getName().equals(person.getName())) {
                Log.e("fffffff44444444444444",p.getName()+" ");
-               String sql = "delete from " + ListView_M.table_name + " where name='"+ person.getName() +" '";
+               String sql = "delete from " + ListView_M.table_name + " where name='"+person.getName()+" '";
                db.execSQL(sql);
                  return;
 
@@ -96,12 +96,12 @@ return false;
         Cursor cursor= db.rawQuery(sql,null);
         while(cursor.moveToNext()){
 
-//             User user =new User();
+//             Userss user =new Userss();
 //             String name=cursor.getString(cursor.getColumnIndex("name"));
 //            user.setName(name);
 //            user.setName(cursor.getString(cursor.getColumnIndex("name")));
 //            user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
-//            User user =new User(cursor.getString(cursor.getColumnIndex("name")),
+//            Userss user =new Userss(cursor.getString(cursor.getColumnIndex("name")),
 //                    cursor.getString(cursor.getColumnIndex("password")));
             list.add(new Person(cursor.getString(cursor.getColumnIndex("url")),
                     cursor.getString(cursor.getColumnIndex("name")),

@@ -8,18 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.lenovo.numbertwoapp.R;
 import com.example.lenovo.numbertwoapp.model.FootBall;
-import com.example.lenovo.numbertwoapp.model.User;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import io.vov.vitamio.MediaPlayer;
-import io.vov.vitamio.widget.MediaController;
-import io.vov.vitamio.widget.VideoView;
 
 /**
  * Created by Zhang on 2017/3/1.

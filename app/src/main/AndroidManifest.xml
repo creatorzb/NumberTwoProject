@@ -28,15 +28,14 @@
         <activity android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
             >
-
+        </activity>
+        <activity android:name=".activity.Log_Activity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
 
         <activity android:name=".activity.WebActivity"></activity>
@@ -70,6 +69,8 @@
             android:name="UMENG_APPKEY"
             android:value="561cae6ae0f55abd990035bf" >
         </meta-data>
+        <activity android:name=".activity.Add_activity"></activity>
+        <activity android:name=".activity.DL_Activity"></activity>
     </application>
 
 </manifest>

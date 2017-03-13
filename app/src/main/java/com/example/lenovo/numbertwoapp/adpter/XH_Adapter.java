@@ -32,7 +32,7 @@ public class XH_Adapter extends BaseAdapter{
     }
     public void update(ArrayList<XiaoHua.ResultBean.DataBean> list){
         this.list=list;
-
+        notifyDataSetChanged();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class XH_Adapter extends BaseAdapter{
     }
     class ViewHoler{
         private TextView textView_name,textView_date;
-
+private ImageView imageView;
 
 
 
@@ -65,13 +65,14 @@ public class XH_Adapter extends BaseAdapter{
            convertView= LayoutInflater.from(context).inflate(R.layout.item_layout,null);
            viewHoler.textView_name= (TextView) convertView.findViewById(R.id.textView_name);
            viewHoler.textView_date= (TextView) convertView.findViewById(R.id.textView_url);
-
+          viewHoler.imageView= (ImageView) convertView.findViewById(R.id.imageView);
             convertView.setTag(viewHoler);
         }
            viewHoler= (ViewHoler) convertView.getTag();
+
         viewHoler.textView_name.setText((list.get(position).getContent()));
         viewHoler.textView_date.setText(list.get(position).getUpdatetime());
-
+        Picasso.with(context).load(list.get(position).getUrl()).resize(100,100).into(viewHoler.imageView);
 
 
 
