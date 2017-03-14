@@ -21,8 +21,8 @@ public class DB_C {
     }
 
     public void  add(String name,String number,int image,int cs){
-        String sql="insert into "+ DB_M.table_name +" values (null,' "+name
-                +" ','"+number+" ','"+image+" ','"+cs+"')";
+        Log.e("添加",name+"   "+number+"   "+image);
+        String sql="insert into "+ DB_M.table_name +" values (null,'"+name+"','"+number+"','"+image+" ','"+cs+"')";
         db.execSQL(sql);
     }
     public void delete(ArrayList<User> list){
@@ -71,7 +71,23 @@ public class DB_C {
                     ));
         }
         cursor.close();
+        Log.e("查看全部     ",list.toString());
         return list;
+    }
+    public  String selectpassword(ArrayList<User>list,String name){
+        String password="";
+        String sql="select number from " +DB_M.table_name +" where  name='"+name+"'";
+        Cursor cursor=db.rawQuery(sql,null);
+        while (cursor.moveToNext()){
+            password=cursor.getString(cursor.getColumnIndex("number"));
+
+
+        }
+
+return password;
+
+
+
     }
     public String selectname (ArrayList<User> list,int id){
         ArrayList<User>listt=list;
@@ -91,10 +107,9 @@ while (cursor.moveToNext()){
         }
 return null;
     }
-    public int selectimage(ArrayList<User> list,int id){
-        ArrayList<User>listt1=list;
+    public int selectimage(String name){
         int image=0;
-        String sql="select image from " +DB_M.table_name +" where  name='"+listt1.get(id).getName()+"'";
+        String sql="select image from " +DB_M.table_name +" where  name='"+name+"'";
         Cursor cursor=db.rawQuery(sql,null);
 
         while (cursor.moveToNext()){

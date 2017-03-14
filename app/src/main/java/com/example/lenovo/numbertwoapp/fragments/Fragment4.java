@@ -12,6 +12,10 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.example.lenovo.numbertwoapp.adpter.XH_Adapter;
+
+import in.srain.cube.views.ptr.PtrClassicFrameLayout;
+import in.srain.cube.views.ptr.PtrDefaultHandler2;
+import in.srain.cube.views.ptr.PtrFrameLayout;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Call;
@@ -22,6 +26,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+import in.srain.cube.views.ptr.PtrFrameLayout;
+import com.example.lenovo.numbertwoapp.model.MyPtrHandler;
+import com.example.lenovo.numbertwoapp.model.MyPtrRefresher;
 import com.example.lenovo.numbertwoapp.model.XiaoHua;
 import com.example.lenovo.numbertwoapp.R;
 
@@ -35,6 +42,8 @@ import retrofit2.Call;
  */
 
 public class Fragment4 extends Fragment{
+    private PtrClassicFrameLayout ptrLayout;
+    private List<String> dataSource;
     private int i=1;
     private ListView listView;
     private XH_Adapter xh_adapter;
@@ -44,9 +53,17 @@ public class Fragment4 extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment4,null);
         listView= (ListView) view.findViewById(R.id.xiaohua_lv);
+        ptrLayout= (PtrClassicFrameLayout) view.findViewById(R.id.ptr_layout);
         ruquestOne();
         return view;
 
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
+        initView();
+        initEvent();
     }
     public void ruquestOne(){
 
@@ -109,23 +126,18 @@ public class Fragment4 extends Fragment{
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-
+                      Log.e("滑动状态",scrollState+"");
             }
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if(visibleItemCount==totalItemCount){
-
-                    ruquestOne();;
-                    xh_adapter.update(list);
-
-
-                }else if (firstVisibleItem+visibleItemCount==totalItemCount){
-                   i++;
-                    ruquestOne();;
-                    xh_adapter.add(list);
-
-                }
+//                if(visibleItemCount==totalItemCount){
+//                      i++;
+//                    ruquestOne();;
+//                    xh_adapter.add(list);
+//
+//
+//                }
 
 
 
@@ -133,5 +145,68 @@ public class Fragment4 extends Fragment{
         });
 
 
+    }
+    /**
+     * 初始化数据
+     */
+    private void initData() {
+        // 初始化ListView中展示的数据
+        dataSource = new ArrayList<>();
+        for (int i = 1; i <= 50; i++) {
+            dataSource.add("Existed Old List Item " + i);
+        }
+    }
+
+    /**
+     * 初始化布局控件
+     */
+    private void initView() {
+        // 初始化ListView中的数据
+        //adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, dataSource);
+        // recyclerView.setAdapter(adapter);
+        // 为布局设置头部和底部布局
+        ptrLayout.setHeaderView(new MyPtrRefresher(getActivity()));
+        ptrLayout.setFooterView(new MyPtrRefresher(getActivity()));
+        ptrLayout.addPtrUIHandler(new MyPtrHandler(getActivity(), ptrLayout));
+    }
+
+    /**
+     * 初始化事件
+     */
+    private void initEvent() {
+        // 为布局设置下拉刷新和上拉加载的回调事件
+        ptrLayout.setPtrHandler(new PtrDefaultHandler2() {
+            @Override
+            public void onLoadMoreBegin(PtrFrameLayout frame) { // 上拉加载的回调方法
+                frame.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dataSource.add("New Bottom List Item");
+                        // adapter.notifyDataSetChanged();
+                        i++;
+                   ruquestOne();;
+                   xh_adapter.add(list);
+                        ptrLayout.refreshComplete();
+                        listView.smoothScrollToPosition(dataSource.size() - 1);
+                    }
+                }, 3000);
+            }
+
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) { // 下拉刷新的回调方法
+                frame.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dataSource.add(0, "New Top List Item");
+                        ruquestOne();;
+                        xh_adapter.update(list);;
+                        // adapter.notifyDataSetChanged();
+                        ptrLayout.refreshComplete();
+
+                         listView.smoothScrollToPosition(0);
+                    }
+                }, 3000);
+            }
+        });
     }
 }

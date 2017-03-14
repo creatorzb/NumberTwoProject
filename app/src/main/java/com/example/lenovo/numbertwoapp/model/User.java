@@ -62,4 +62,16 @@ public class User implements Serializable {
 
     public User() {
     }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", number='" + number + '\'' +
+                ", CheckBox=" + CheckBox +
+                ", image=" + image +
+                ", cs=" + cs +
+                '}';
+    }
 }

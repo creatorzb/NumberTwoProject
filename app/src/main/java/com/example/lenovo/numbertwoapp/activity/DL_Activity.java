@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable.Creator;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,23 +43,43 @@ public class DL_Activity extends BaseActivity {
          btn.setOnClickListener(new OnClickListener() {
 	@Override
 	public void onClick(View v) {
-		int i=puanDuan(text1.getText().toString(),text.getText().toString(),db_c.showAll());
+		//int i=puanDuan(text1.getText().toString(),text.getText().toString(),db_c.showAll());
+if(puanDuanpassword(text1.getText().toString(),text.getText().toString(),
+		puanDuan(text1.getText().toString(),text.getText().toString(),db_c.showAll()))){
 
-		if(i==0){
-			Toast.makeText(DL_Activity.this,"账户不存在！",Toast.LENGTH_SHORT).show();
+	Toast.makeText(DL_Activity.this,"登陆成功！",Toast.LENGTH_SHORT).show();
+//
+			Intent intent=new Intent(DL_Activity.this,MainActivity.class);
+			intent.putExtra("name",text.getText().toString());
+			intent.putExtra("image",db_c.selectimage(text.getText().toString()));
+			startActivity(intent);
+			finish();
+
+}else if (!puanDuanpassword(text1.getText().toString(),text.getText().toString(),
+		puanDuan(text1.getText().toString(),text.getText().toString(),db_c.showAll()))){
+	Toast.makeText(DL_Activity.this,"账户不存在！",Toast.LENGTH_SHORT).show();
 			Intent intent1=new Intent(DL_Activity.this,Add_activity.class);
 			startActivity(intent1);
 			finish();
 
-		} else if(i==1){
-			Toast.makeText(DL_Activity.this,"登陆成功！",Toast.LENGTH_SHORT).show();
-
-			Intent intent=new Intent(DL_Activity.this,MainActivity.class);
-			startActivity(intent);
-			finish();
-		}else if(i==2){
-			Toast.makeText(DL_Activity.this,"密码错误！",Toast.LENGTH_SHORT).show();
-		}
+}
+//		if(i==0){
+//			Toast.makeText(DL_Activity.this,"账户不存在！",Toast.LENGTH_SHORT).show();
+//			Intent intent1=new Intent(DL_Activity.this,Add_activity.class);
+//			startActivity(intent1);
+//			finish();
+//
+//		} else if(i==1){
+//			Toast.makeText(DL_Activity.this,"登陆成功！",Toast.LENGTH_SHORT).show();
+//
+//			Intent intent=new Intent(DL_Activity.this,MainActivity.class);
+//			intent.putExtra("name",text.getText().toString());
+//			intent.putExtra("image",db_c.selectimage(text.getText().toString()));
+//			startActivity(intent);
+//			finish();
+//		}else if(i==2){
+//			Toast.makeText(DL_Activity.this,"密码错误！",Toast.LENGTH_SHORT).show();
+//		}
 
 
 	}});
@@ -73,19 +94,31 @@ public class DL_Activity extends BaseActivity {
 	}
 
 
-	private int puanDuan(String name,String password,ArrayList<User>list){
-		for (User u:list) {
-			if(u.getName().equals(name)&&u.getNumber().equals(password)){
-				return 1;
-			}else if (u.getName().equals(name)&&!u.getNumber().equals(password)){
+	private ArrayList<String> puanDuan(String name,String password,ArrayList<User>list){
 
-				return 2;
-			}
+		ArrayList<String> namelist =new ArrayList<>();
+		for (int i=0;i<list.size();i++) {
+			namelist.add(list.get(i).getName());
 		}
 
-		return 0;
-	}
+		Log.e("名字",namelist.toString());
 
+		return namelist;
+	}
+	private boolean puanDuanpassword(String name,String password,ArrayList<String>namelist){
+
+
+
+		Log.e("名字2",namelist.toString());
+		if(namelist.contains(name)){
+			Log.e("密码",db_c.selectpassword(db_c.showAll(),name));
+			if(db_c.selectpassword(db_c.showAll(),name).equals(password)){
+				Log.e("名字2",namelist.toString());
+				return true;
+			}
+		}
+		return false;
+	}
 
 
 

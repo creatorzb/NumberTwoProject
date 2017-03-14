@@ -28,7 +28,7 @@ public class LoLView_C {
         for (Person person : list) {
             if (!person.getUrl().equals(p.getUrl()) && p.getUrl() != null) {
 
-                String sql = "insert into " + ListView_M.table_name + " values ( null ,' "+ p.getUrl() +"' , '"+p.getName()+"' , '"+ p.getImage()+" ') ";
+                String sql = "insert into " + ListView_M.table_name + " values ( null ,' "+p.getUrl()+"','"+p.getName()+"','"+ p.getImage()+" ') ";
                 db.execSQL(sql);
                 return;
             }else if (p.getName()==null){

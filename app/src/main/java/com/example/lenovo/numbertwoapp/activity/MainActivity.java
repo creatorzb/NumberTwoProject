@@ -1,4 +1,6 @@
 package com.example.lenovo.numbertwoapp.activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -17,7 +19,7 @@ import com.example.lenovo.numbertwoapp.fragments.Fragment5;
 
 
 public class MainActivity extends BaseActivity {
-
+     private static int p=0;
     private FragmentManager fm;
     private FragmentTransaction ft;
     private RelativeLayout relativeLayout_home,relativeLayout_hot,
@@ -31,6 +33,8 @@ public class MainActivity extends BaseActivity {
     textView_live,textView_person;
     @Override
     public void addLayout() {setContentView(R.layout.activity_main);
+
+
         }
     @Override
     public void initView() {
@@ -162,6 +166,14 @@ public class MainActivity extends BaseActivity {
                 imageView_live02.setVisibility(View.INVISIBLE);
                 imageView_live01.setVisibility(View.VISIBLE);
                 choiceFragment(4);
+//                Fragment fragment=new Fragment5();
+//                Intent intent=getIntent();
+//                int image=intent.getIntExtra("image",0);
+//                String name=intent.getStringExtra("name");
+//                Bundle bundle=new Bundle();
+//                bundle.putString("name",name);
+//                bundle.putInt("image",image);
+//                fragment.setArguments(bundle);
             }});
     }
     public void choiceFragment(int button_index){
@@ -174,7 +186,29 @@ public class MainActivity extends BaseActivity {
         ft.show(fragments[button_index]);
     }
         ft.hide(fragments[count]);
+        if(button_index==4){
+            Intent intent=getIntent();
+            int image=intent.getIntExtra("image",0);
+            if (image==0){
+                image=R.drawable.btn_menu_user_center_icon_press;
+
+            }
+            String name=intent.getStringExtra("name");
+            if(name==null){
+                name="点击登录";
+            }
+            if(p==0&&button_index==4){
+                Bundle bundle=new Bundle();
+                bundle.putString("name",name);
+                bundle.putInt("image",image);
+                fragments[button_index].setArguments(bundle);
+               // p=1;
+            }
+
+
+        }
         ft.commit();
+
         count=button_index;
 }
     }
@@ -189,7 +223,8 @@ public class MainActivity extends BaseActivity {
        case 3:
            return new Fragment4();
        case 4:
-           return new Fragment5();
+           return new Fragment5()
+                   ;
    }
         return null;
     }
